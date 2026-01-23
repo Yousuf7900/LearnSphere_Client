@@ -19,7 +19,7 @@ const SignIn = () => {
                 console.log(err.message);
             })
     }
-
+    
     // Google sign in
     const handleGoogleSignIn = () => {
         googleAuth()

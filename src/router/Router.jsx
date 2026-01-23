@@ -4,6 +4,8 @@ import ErrorPage from "../pages/ErrorPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Layout from "../layout/Layout";
+import Contact from "../pages/Contact";
+import About from "../pages/About";
 
 const Router = createBrowserRouter([
     {
@@ -25,6 +27,16 @@ const Router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            // contact page
+            {
+                path: '/contact',
+                element: <Contact></Contact>
+            },
+            // about page
+            {
+                path: '/about',
+                element: <About></About>
             },
             // This is the error page
             {
