@@ -63,4 +63,4 @@ The project follows a clean and maintainable folder structure suitable for a pro
 - UI and performance improvements
 
 ## Author
-Yousuf Islam
+(https://github.com/Yousuf7900)
