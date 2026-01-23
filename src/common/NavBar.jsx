@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 const NavBar = () => {
     return (
@@ -38,9 +39,21 @@ const NavBar = () => {
                     <li><a>Item 3</a></li>
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="navbar-end gap-2">
+                <Link
+                    to="/signup"
+                    className="btn btn-ghost btn-sm rounded-xl"
+                >
+                    Sign Up
+                </Link>
+                <Link
+                    to="/signin"
+                    className="btn btn-primary btn-sm font-medium"
+                >
+                    Sign In
+                </Link>
             </div>
+
         </div>
     );
 };
