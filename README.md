@@ -4,7 +4,6 @@ LearnSphere is an online tutor booking and language exchange platform that allow
 
 ## Live Website
 
-
 ## Project Purpose
 The purpose of this project is to connect learners with tutors across different languages and provide a simple, user-friendly platform for booking online tutoring sessions.
 
@@ -15,7 +14,7 @@ The purpose of this project is to connect learners with tutors across different 
 - View tutor details
 - Book tutors
 - Add, update, and delete tutorials
-- Review tutors (review count increases)
+- Review tutors
 - Private routes protected with JWT
 - Responsive design for all devices
 - Dark and light theme support
@@ -63,4 +62,5 @@ The project follows a clean and maintainable folder structure suitable for a pro
 - UI and performance improvements
 
 ## Author
-(https://github.com/Yousuf7900)
+Yousuf Islam  
+GitHub: https://github.com/Yousuf7900
