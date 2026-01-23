@@ -1,16 +1,66 @@
-# React + Vite
+# LearnSphere
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LearnSphere is an online tutor booking and language exchange platform that allows users to find tutors, book learning sessions, and manage tutorials through a secure and responsive web application.
 
-Currently, two official plugins are available:
+## Live Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## Project Purpose
+The purpose of this project is to connect learners with tutors across different languages and provide a simple, user-friendly platform for booking online tutoring sessions.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key Features
+- User authentication using email/password and Google
+- Browse tutors by language
+- Search tutors by language
+- View tutor details
+- Book tutors
+- Add, update, and delete tutorials
+- Review tutors (review count increases)
+- Private routes protected with JWT
+- Responsive design for all devices
+- Dark and light theme support
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- React
+- React Router
+- Tailwind CSS
+- Firebase Authentication
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- JSON Web Token (JWT)
+
+## NPM Packages
+
+### Client
+- react
+- react-router-dom
+- firebase
+- axios
+
+### Server
+- express
+- cors
+- dotenv
+- jsonwebtoken
+- mongodb
+- cookie-parser
+
+## Environment Variables
+Environment variables are used to secure Firebase configuration, MongoDB credentials, and JWT secret keys.
+
+## Project Structure
+The project follows a clean and maintainable folder structure suitable for a professional React application.
+
+## Future Improvements
+- Pagination on the Find Tutors page
+- Advanced search and filtering
+- Tutor rating system
+- UI and performance improvements
+
+## Author
+Yousuf Islam
