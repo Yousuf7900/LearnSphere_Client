@@ -1,9 +1,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import Typewriter from "typewriter-effect";
 
 const slides = [
@@ -77,12 +75,11 @@ const Carousel = () => {
             </div>
 
             <Swiper
-                modules={[Autoplay, Pagination, Navigation]}
+                modules={[Autoplay]}
                 spaceBetween={18}
                 slidesPerView={1}
                 loop
                 autoplay={{ delay: 3500, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
                 breakpoints={{
                     640: { slidesPerView: 1 },
                     768: { slidesPerView: 2 },

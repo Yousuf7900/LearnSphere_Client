@@ -6,6 +6,11 @@ import SignUp from "../pages/SignUp";
 import Layout from "../layout/Layout";
 import Contact from "../pages/Contact";
 import About from "../pages/About";
+import AddTutorials from "../pages/AddTutorials";
+import MyTutorials from "../pages/MyTutorials";
+import MyBookedTutors from "../pages/MyBookedTutors";
+import FindTutors from "../pages/FindTutors";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = createBrowserRouter([
     {
@@ -13,35 +18,46 @@ const Router = createBrowserRouter([
         element: <Layout></Layout>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
-            // Home page
             {
                 path: '/',
                 element: <Home></Home>
             },
-            // SignIn page
+            {
+                path: '/find-tutors',
+                element: <FindTutors></FindTutors>
+            },
             {
                 path: '/signin',
                 element: <SignIn></SignIn>
             },
-            // SignUp page
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
-            // contact page
             {
                 path: '/contact',
                 element: <Contact></Contact>
             },
-            // about page
             {
                 path: '/about',
                 element: <About></About>
             },
-            // This is the error page
             {
                 path: '*',
                 element: <ErrorPage></ErrorPage>
+            },
+            // private routes
+            {
+                path: '/add-tutorials',
+                element: <PrivateRouter><AddTutorials></AddTutorials></PrivateRouter>
+            },
+            {
+                path: '/my-tutorials',
+                element: <PrivateRouter><MyTutorials></MyTutorials></PrivateRouter>
+            },
+            {
+                path: '/my-booked-tutors',
+                element: <PrivateRouter><MyBookedTutors></MyBookedTutors></PrivateRouter>
             }
         ]
     },
