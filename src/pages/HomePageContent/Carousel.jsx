@@ -99,7 +99,7 @@ const Carousel = () => {
                                     alt={s.title}
                                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/25 to-transparent" />
                                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                                     <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
                                         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
