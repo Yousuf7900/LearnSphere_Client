@@ -19,7 +19,7 @@ const SignIn = () => {
                 console.log(err.message);
             })
     }
-    
+
     // Google sign in
     const handleGoogleSignIn = () => {
         googleAuth()
@@ -90,17 +90,18 @@ const SignIn = () => {
                                     <label className="label pb-1">
                                         <span className="label-text font-medium">Password</span>
                                     </label>
-                                    <div className="input input-bordered rounded-2xl h-12 flex items-center gap-2 w-full">
+
+                                    <div className="relative">
                                         <input
                                             type={showPass ? "text" : "password"}
                                             name="password"
-                                            className="grow bg-transparent outline-none"
+                                            className="input input-bordered rounded-2xl h-12 w-full pr-14"
                                             placeholder="••••••••"
                                         />
                                         <button
                                             type="button"
                                             onClick={handlePassButton}
-                                            className="btn btn-ghost btn-xs rounded-xl"
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-primary"
                                         >
                                             {showPass ? "Hide" : "Show"}
                                         </button>

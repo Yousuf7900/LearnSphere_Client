@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import useAuth from "../hooks/useAuth";
 
 const SignUp = () => {
-    const { createNewUser } = useAuth();
+    const { createNewUser, googleAuth } = useAuth();
     const [showPass, setShowPass] = useState(false);
 
     // sign up handler with form data
@@ -18,13 +18,24 @@ const SignUp = () => {
             })
             .catch(err => {
                 console.log(err.message);
+            });
+    };
+
+    // Google SignUp 
+    const handleGoogleAuth = () => {
+        googleAuth()
+            .then(result => {
+                console.log(result.user);
             })
-    }
+            .catch(err => {
+                console.log(err.message);
+            })
+    };
 
     // control the password hide & seek
     const handlePasswordButton = () => {
-        setShowPass(p => !p);
-    }
+        setShowPass(prev => !prev);
+    };
 
     return (
         <div className="min-h-screen relative overflow-hidden bg-linear-to-br from-base-200 via-base-100 to-base-200">
@@ -61,68 +72,88 @@ const SignUp = () => {
                             </div>
 
                             <form onSubmit={handleSignUpForm} className="mt-8 space-y-4">
+
                                 <div className="form-control">
                                     <label className="label pb-1">
                                         <span className="label-text font-medium">Full Name</span>
                                     </label>
-                                    <div className="input input-bordered rounded-2xl h-12 flex items-center w-full">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            className="grow bg-transparent outline-none"
-                                            placeholder="John Wick"
-                                        />
-                                    </div>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        className="input input-bordered rounded-2xl h-12 w-full"
+                                        placeholder="John Wick"
+                                    />
                                 </div>
+
                                 <div className="form-control">
                                     <label className="label pb-1">
                                         <span className="label-text font-medium">Email</span>
                                     </label>
-                                    <div className="input input-bordered rounded-2xl h-12 flex items-center w-full">
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            className="grow bg-transparent outline-none"
-                                            placeholder="you@example.com"
-                                        />
-                                    </div>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        className="input input-bordered rounded-2xl h-12 w-full"
+                                        placeholder="you@example.com"
+                                    />
                                 </div>
+
                                 <div className="form-control">
                                     <label className="label pb-1">
                                         <span className="label-text font-medium">Password</span>
                                     </label>
-                                    <div className="input input-bordered rounded-2xl h-12 flex items-center gap-2 w-full">
+
+                                    <div className="relative">
                                         <input
                                             type={showPass ? "text" : "password"}
                                             name="password"
-                                            className="grow bg-transparent outline-none"
+                                            className="input input-bordered rounded-2xl h-12 w-full pr-14"
                                             placeholder="••••••••"
                                         />
                                         <button
                                             type="button"
                                             onClick={handlePasswordButton}
-                                            className="btn btn-ghost btn-xs rounded-xl"
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-primary"
                                         >
                                             {showPass ? "Hide" : "Show"}
                                         </button>
                                     </div>
                                 </div>
+
                                 <div className="form-control">
                                     <label className="label pb-1">
                                         <span className="label-text font-medium">Photo URL</span>
                                     </label>
-                                    <div className="input input-bordered rounded-2xl h-12 flex items-center w-full">
-                                        <input
-                                            type="text"
-                                            name="photoURL"
-                                            className="grow bg-transparent outline-none"
-                                            placeholder="https://example.com/photo.jpg"
-                                        />
-                                    </div>
+                                    <input
+                                        type="text"
+                                        name="photoURL"
+                                        className="input input-bordered rounded-2xl h-12 w-full"
+                                        placeholder="https://example.com/photo.jpg"
+                                    />
                                 </div>
-                                <button className="btn btn-primary w-full rounded-2xl h-12 text-base">
+
+                                <button className="btn btn-primary w-full rounded-2xl h-12">
                                     Create Account
                                 </button>
+
+                                <div className="relative py-2">
+                                    <div className="absolute inset-0 flex items-center">
+                                        <div className="w-full border-t border-base-content/10"></div>
+                                    </div>
+                                    <div className="relative flex justify-center text-xs">
+                                        <span className="bg-base-100 px-2 text-base-content/50">
+                                            OR
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={handleGoogleAuth}
+                                    className="btn w-full rounded-2xl h-12 border border-base-content/10 bg-base-100 hover:bg-base-200 flex items-center justify-center gap-3"
+                                >
+                                    Continue with Google
+                                </button>
+
                                 <p className="pt-2 text-center text-sm text-base-content/60">
                                     Already have an account?{" "}
                                     <Link to="/signin" className="link link-primary font-medium">
@@ -132,6 +163,7 @@ const SignUp = () => {
                             </form>
                         </div>
                     </div>
+
                     <p className="mt-4 text-center text-xs text-base-content/50">
                         By signing up, you agree to our Terms & Privacy Policy.
                     </p>
