@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../hooks/useAuth";
-
+import axios from "axios";
 const SignIn = () => {
     const [showPass, setShowPass] = useState(false);
     const { signInWithCredentials, googleAuth } = useAuth();
@@ -13,7 +13,24 @@ const SignIn = () => {
         const { email, password } = Object.fromEntries(formData.entries());
         signInWithCredentials(email, password)
             .then(result => {
-                console.log("Signed In", result.user);
+                const user = result.user;
+                console.log(user);
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    createdAt: user.metadata.createdAt,
+                    creationTime: user.metadata.creationTime,
+                    lastLoginAt: user.metadata.lastLoginAt,
+                    lastSignInTime: user.metadata.lastSignInTime
+                }
+                axios.put(`http://localhost:5000/user/${user.uid}`, userData)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(err => {
+                        console.log(err.message);
+                    })
             })
             .catch(err => {
                 console.log(err.message);
@@ -24,7 +41,23 @@ const SignIn = () => {
     const handleGoogleSignIn = () => {
         googleAuth()
             .then(result => {
-                console.log(result.user);
+                const user = (result.user);
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    createdAt: user.metadata.createdAt,
+                    creationTime: user.metadata.creationTime,
+                    lastLoginAt: user.metadata.lastLoginAt,
+                    lastSignInTime: user.metadata.lastSignInTime
+                }
+                axios.put(`http://localhost:5000/user/${user.uid}`, userData)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(err => {
+                        console.log(err.message);
+                    })
             })
             .catch(err => {
                 console.log(err.message);

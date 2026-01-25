@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
     const { createNewUser, googleAuth } = useAuth();
@@ -10,11 +12,33 @@ const SignUp = () => {
     const handleSignUpForm = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const { email, password } = Object.fromEntries(formData.entries());
+        const { email, password, photoURL, name } = Object.fromEntries(formData.entries());
 
         createNewUser(email, password)
             .then(result => {
-                console.log(result.user);
+                const user = result.user;
+                updateProfile(user, {
+                    displayName: name,
+                    email: email,
+                    photoURL: photoURL
+                })
+                const userData = {
+                    name,
+                    email,
+                    photoURL,
+                    uid: user.uid,
+                    createdAt: user.metadata.createdAt,
+                    creationTime: user.metadata.creationTime,
+                    lastLoginAt: user.metadata.lastLoginAt,
+                    lastSignInTime: user.metadata.lastSignInTime
+                }
+                axios.put(`http://localhost:5000/user/${user.uid}`, userData)
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(err => {
+                        console.log(err.message);
+                    })
             })
             .catch(err => {
                 console.log(err.message);
