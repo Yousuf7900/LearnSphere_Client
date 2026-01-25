@@ -1,5 +1,7 @@
 
+import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AddTutorials = () => {
     const { user } = useAuth();
@@ -9,7 +11,31 @@ const AddTutorials = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const { name, email, photoURL, language, price, desc, review } = Object.fromEntries(formData.entries());
-        
+        const tutorialData = {
+            tutorName: name,
+            tutorEmail: email,
+            tutorPhoto: photoURL,
+            language: language,
+            price: price,
+            desc: desc,
+            review: review
+        }
+        axios.post('http://localhost:5000/tutorials', tutorialData)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Tutorial Published",
+                        text: "Your tutorial has been added successfully.",
+                        confirmButtonText: "OK",
+                        confirmButtonColor: "#2563eb",
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
     }
 
     return (
