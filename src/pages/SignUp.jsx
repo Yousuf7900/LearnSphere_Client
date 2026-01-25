@@ -49,7 +49,23 @@ const SignUp = () => {
     const handleGoogleAuth = () => {
         googleAuth()
             .then(result => {
-                console.log(result.user);
+                const user = result.user;
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    createdAt: user.metadata.createdAt,
+                    creationTime: user.metadata.creationTime,
+                    lastLoginAt: user.metadata.lastLoginAt,
+                    lastSignInTime: user.metadata.lastSignInTime
+                }
+                axios.put(`http://localhost:5000/user/${user.uid}`, userData)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(err => {
+                        console.log(err.message);
+                    })
             })
             .catch(err => {
                 console.log(err.message);
