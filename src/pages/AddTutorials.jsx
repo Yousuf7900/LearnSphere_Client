@@ -15,9 +15,9 @@ const AddTutorials = () => {
             tutorEmail: email,
             tutorPhoto: photoURL,
             language: language,
-            price: price,
+            price: Number(price),
             desc: desc,
-            review: review
+            review: Number(review)
         }
         axios.post('http://localhost:5000/tutorials', tutorialData)
             .then(res => {

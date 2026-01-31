@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import useAuth from "../hooks/useAuth";
 
 const TutorDetails = () => {
     const { id } = useParams();
+    const { user } = useAuth();
     const [tutor, setTutor] = useState(null);
     const navigate = useNavigate();
 
@@ -16,6 +18,25 @@ const TutorDetails = () => {
                 console.log(err.message);
             });
     }, [id]);
+
+    const handleBook = () => {
+        const bookingData = {
+            tutorId: tutor._id,
+            image: tutor.tutorPhoto,
+            language: tutor.language,
+            price: tutor.price,
+            tutorEmail: tutor.tutorEmail,
+            userEmail: user.email
+        };
+        axios.post("http://localhost:5000/bookings", bookingData)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }
+
     if (!tutor) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -54,7 +75,7 @@ const TutorDetails = () => {
                             Price: ৳{tutor.price}
                         </p>
                         <div className="flex gap-4 pt-6">
-                            <button className="btn btn-primary px-6">
+                            <button onClick={handleBook} className="btn btn-primary px-6">
                                 Book Now
                             </button>
                             <button onClick={() => navigate(-1)} className="btn btn-outline px-6">
