@@ -10,8 +10,7 @@ const MyTutorials = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        axios
-            .get(`http://localhost:5000/all-tutorials/${user.email}`)
+        axios.get(`http://localhost:5000/all-tutorials/${user.email}`)
             .then((res) => {
                 setMyTutorials(res.data);
             })
@@ -33,7 +32,10 @@ const MyTutorials = () => {
                 </div>
 
                 <div className="w-full sm:w-auto rounded-2xl border border-base-300 bg-base-100 px-5 py-3">
-                    <p className="text-s text-base-content/60">Total tutorials: <span className="font-bold">{myTutorials.length}</span></p>
+                    <p className="text-sm text-base-content/60">
+                        Total tutorials:{" "}
+                        <span className="font-bold">{myTutorials.length}</span>
+                    </p>
                 </div>
             </div>
 
@@ -49,7 +51,12 @@ const MyTutorials = () => {
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                     {myTutorials.map((tutorial) => (
-                        <MyTutorialsCard key={tutorial._id} tutorial={tutorial} />
+                        <MyTutorialsCard
+                            key={tutorial._id}
+                            tutorial={tutorial}
+                            myTutorials={myTutorials}
+                            setMyTutorials={setMyTutorials}
+                        />
                     ))}
                 </div>
             )}
