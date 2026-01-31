@@ -94,7 +94,7 @@ const AllTutorialsCard = ({ tutorial }) => {
                         </div>
 
                         <Link
-                            to={`/tutorial-details/${_id}`}
+                            to={`/tutor-details/${_id}`}
                             className="btn btn-primary"
                         >
                             View Details

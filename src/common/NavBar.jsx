@@ -65,38 +65,64 @@ const NavBar = () => {
 
             </div>
 
-            {/* CENTER */}
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-1">
                     {user?.email ? privateLinks : publicLinks}
                 </ul>
             </div>
 
-            {/* END */}
             <div className="navbar-end gap-2">
                 {user?.email ? (
-                    <button
-                        onClick={() => signOutUser()}
-                        className="btn btn-outline btn-sm rounded-xl border-error text-error hover:bg-error hover:text-white gap-2 transition"> <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        > <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
-                            /> </svg>
-                        Log Out
-                    </button>
+                    <div className="dropdown dropdown-end">
+                        <div
+                            tabIndex={0}
+                            className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom"
+                            data-tip={user?.displayName || "User"}
+                        >
+                            <div className="w-10 rounded-full ring-2 ring-base-300">
+                                <img
+                                    src={user?.photoURL}
+                                    referrerPolicy="no-referrer"
+                                    alt="User"
+                                />
+                            </div>
+                        </div>
+
+                        <ul
+                            tabIndex={0}
+                            className="dropdown-content menu p-2 shadow bg-base-100 rounded-xl w-56 mt-3 border border-base-300"
+                        >
+                            <li className="px-3 py-2 cursor-default">
+                                <span className="font-medium">{user?.displayName || "User"}</span>
+                            </li>
+                            <div className="my-1 border-t border-base-200" />
+                            <li>
+                                <button
+                                    onClick={signOutUser}
+                                    className="btn btn-outline btn-sm rounded-xl border-error text-error hover:bg-error hover:text-white gap-2 w-full justify-start"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-4 w-4"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
+                                        />
+                                    </svg>
+                                    Log Out
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 ) : (
                     <>
-                        <NavLink
-                            to="/signup"
-                            className="btn btn-ghost btn-sm rounded-xl"
-                        >
+                        <NavLink to="/signup" className="btn btn-ghost btn-sm rounded-xl">
                             Sign Up
                         </NavLink>
                         <NavLink
@@ -108,7 +134,6 @@ const NavBar = () => {
                     </>
                 )}
             </div>
-
         </div>
     );
 };

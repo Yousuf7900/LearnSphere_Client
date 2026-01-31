@@ -5,7 +5,7 @@ import axios from "axios";
 import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
-    const { createNewUser, googleAuth } = useAuth();
+    const { createNewUser, googleAuth, setUser } = useAuth();
     const [showPass, setShowPass] = useState(false);
 
     // sign up handler with form data
@@ -50,6 +50,7 @@ const SignUp = () => {
         googleAuth()
             .then(result => {
                 const user = result.user;
+                setUser(user);
                 const userData = {
                     name: user.displayName,
                     email: user.email,
