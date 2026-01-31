@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 const AddTutorials = () => {
     const { user } = useAuth();
 
-    // tutorial form handle
     const handleTutorialFormData = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -47,7 +46,6 @@ const AddTutorials = () => {
                         Create a tutorial listing with clear and accurate information.
                     </p>
                 </div>
-
                 <div className="rounded-2xl border border-base-300 bg-base-100 shadow-sm">
                     <form onSubmit={handleTutorialFormData} className="p-6 sm:p-8">
                         <div className="grid grid-cols-1 gap-6">
@@ -66,7 +64,6 @@ const AddTutorials = () => {
                                             readOnly
                                         />
                                     </div>
-
                                     <div>
                                         <label className="label">
                                             <span className="label-text font-medium">Email</span>
@@ -81,10 +78,8 @@ const AddTutorials = () => {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="rounded-xl border border-base-300 bg-base-100 p-5">
                                 <h3 className="text-sm font-semibold text-base-content/80">Tutorial Details</h3>
-
                                 <div className="mt-4 grid grid-cols-1 gap-5">
                                     <div>
                                         <label className="label">
@@ -92,6 +87,7 @@ const AddTutorials = () => {
                                         </label>
                                         <input
                                             type="text"
+                                            required
                                             name="photoURL"
                                             placeholder="https://example.com/tutorial-image.jpg"
                                             className="input input-bordered w-full"
@@ -100,7 +96,6 @@ const AddTutorials = () => {
                                             Tip: Use a clear thumbnail and a concise description to improve engagement.
                                         </div>
                                     </div>
-
                                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                         <div>
                                             <label className="label">
@@ -109,36 +104,36 @@ const AddTutorials = () => {
                                             <input
                                                 type="text"
                                                 name="language"
+                                                required
                                                 placeholder="English, German, Japanese..."
                                                 className="input input-bordered w-full"
                                             />
                                         </div>
-
                                         <div>
                                             <label className="label">
                                                 <span className="label-text font-medium">Price</span>
                                             </label>
                                             <input
                                                 type="number"
+                                                required
                                                 placeholder="0"
                                                 name="price"
                                                 className="input input-bordered w-full"
                                             />
                                         </div>
                                     </div>
-
                                     <div>
                                         <label className="label">
                                             <span className="label-text font-medium">Description</span>
                                         </label>
                                         <textarea
+                                            required
                                             rows="5"
                                             name="desc"
                                             placeholder="Write a short, learner-focused description..."
                                             className="textarea textarea-bordered w-full resize-none"
                                         ></textarea>
                                     </div>
-
                                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                         <div>
                                             <label className="label">
@@ -146,20 +141,19 @@ const AddTutorials = () => {
                                             </label>
                                             <input
                                                 type="number"
+                                                required
                                                 name="review"
                                                 className="input input-bordered w-full bg-base-200"
                                                 defaultValue={0}
                                                 readOnly
                                             />
                                         </div>
-
                                         <div className="flex items-end">
                                             <button className="btn btn-primary w-full">
                                                 Publish Tutorial
                                             </button>
                                         </div>
                                     </div>
-
                                     <p className="text-xs text-base-content/60">
                                         Review starts at 0 by default and will update based on learner feedback.
                                     </p>

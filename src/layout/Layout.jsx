@@ -14,7 +14,7 @@ const Layout = () => {
             </section>
 
             <footer>
-                {/* <Footer></Footer> */}
+                <Footer></Footer>
             </footer>
         </div>
     );
