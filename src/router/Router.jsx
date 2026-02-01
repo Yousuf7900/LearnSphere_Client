@@ -29,6 +29,11 @@ const Router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/all-tutorials')
             },
             {
+                path: '/find-tutors/:language',
+                element: <FindTutors></FindTutors>,
+                loader: () => fetch('http://localhost:5000/all-tutorials')
+            },
+            {
                 path: '/signin',
                 element: <SignIn></SignIn>
             },

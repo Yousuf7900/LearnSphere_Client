@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { updateProfile } from "firebase/auth";
@@ -7,6 +7,7 @@ import { updateProfile } from "firebase/auth";
 const SignUp = () => {
     const { createNewUser, googleAuth, setUser } = useAuth();
     const [showPass, setShowPass] = useState(false);
+    const navigate = useNavigate();
 
     // sign up handler with form data
     const handleSignUpForm = (e) => {
@@ -39,6 +40,7 @@ const SignUp = () => {
                     .catch(err => {
                         console.log(err.message);
                     })
+                navigate('/');
             })
             .catch(err => {
                 console.log(err.message);
@@ -67,6 +69,7 @@ const SignUp = () => {
                     .catch(err => {
                         console.log(err.message);
                     })
+                navigate('/');
             })
             .catch(err => {
                 console.log(err.message);

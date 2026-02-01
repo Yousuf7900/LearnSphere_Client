@@ -1,8 +1,11 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 import AllTutorialsCard from "./AllTutorialsCard";
+import { useState } from "react";
 
 const FindTutors = () => {
     const allTutorials = useLoaderData() || [];
+    const [search, setSearch] = useState("");
+    const { language } = useParams();
 
     return (
         <div className="min-h-screen bg-base-200 px-4 py-10">
@@ -23,7 +26,7 @@ const FindTutors = () => {
                 <div className="rounded-2xl border border-base-300 bg-base-100 shadow-sm p-4 sm:p-5">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <label className="input input-bordered flex items-center gap-2 w-full sm:max-w-md">
-                            <input type="text" className="grow" placeholder="Search tutor or language..." />
+                            <input value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="grow" placeholder="Search tutor or language..." />
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
@@ -59,9 +62,15 @@ const FindTutors = () => {
 
                 {allTutorials.length > 0 ? (
                     <div className="mt-6 space-y-4">
-                        {allTutorials.map((tutorial) => (
-                            <AllTutorialsCard key={tutorial._id} tutorial={tutorial} />
-                        ))}
+                        {allTutorials
+                            .filter(tutorial => {
+                                if (!language) return true;
+                                return tutorial.language.toLowerCase() === language.toLowerCase();
+                            })
+                            .filter(tutorial => tutorial.tutorName.toLowerCase().includes(search.toLocaleLowerCase()) || tutorial.language.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+                            .map((tutorial) => (
+                                <AllTutorialsCard key={tutorial._id} tutorial={tutorial} />
+                            ))}
                     </div>
                 ) : (
                     <div className="mt-12 flex flex-col items-center justify-center rounded-2xl border border-dashed border-base-300 bg-base-100 p-10 text-center">

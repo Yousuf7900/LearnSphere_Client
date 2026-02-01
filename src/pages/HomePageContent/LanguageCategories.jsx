@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 const LanguageCategories = () => {
     return (
@@ -10,12 +11,14 @@ const LanguageCategories = () => {
                     </h3>
                 </div>
 
-                <button className="btn btn-outline btn-sm rounded-full">Show more</button>
+                <Link to="/find-tutors" className="btn btn-outline btn-sm rounded-full">
+                    Show more
+                </Link>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/English"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -26,10 +29,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/Spanish"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -40,10 +43,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/French"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -54,10 +57,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/German"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -68,10 +71,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/Italian"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -82,10 +85,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/Chinese"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -96,10 +99,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/Arabic"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -110,10 +113,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/Japanese"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -124,10 +127,10 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
 
-                <a
-                    href="/find-tutors"
+                <Link
+                    to="/find-tutors/Portuguese"
                     className="group flex items-center justify-between rounded-xl border border-base-300 p-5 hover:border-primary transition"
                 >
                     <div className="flex items-center gap-4">
@@ -138,7 +141,7 @@ const LanguageCategories = () => {
                         </div>
                     </div>
                     <span className="text-xl group-hover:translate-x-1 transition">→</span>
-                </a>
+                </Link>
             </div>
         </section>
     );

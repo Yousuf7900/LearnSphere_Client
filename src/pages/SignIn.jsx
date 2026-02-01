@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 const SignIn = () => {
     const [showPass, setShowPass] = useState(false);
     const { signInWithCredentials, googleAuth } = useAuth();
+    const navigate = useNavigate();
 
     // email and password sign in
     const handleFormData = (e) => {
@@ -31,6 +32,7 @@ const SignIn = () => {
                     .catch(err => {
                         console.log(err.message);
                     })
+                navigate('/');
             })
             .catch(err => {
                 console.log(err.message);
@@ -58,6 +60,7 @@ const SignIn = () => {
                     .catch(err => {
                         console.log(err.message);
                     })
+                navigate('/');
             })
             .catch(err => {
                 console.log(err.message);
